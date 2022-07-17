@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>בי&quot;ס ביכורים - טופס ניקוד</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+</style> <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="container" dir="rtl">
+     <img id="logo" src="Images/logo-croped.png" alt="לוגו" />
+     
+     <div id="dynamic"></div>
+             
+     
+ <ul id="errorMsg">
+          <li id="invalidList">נא (למחוק ו)לבחור ערך מהרשימה</li>
+          <li id="invalidEmpty">נא למלא ערך</li>        
+          <li id="invalidPattern">ערך לא תקין</li>
+     </ul>
+     <button id="send">שליחה</button>
+     <br>
+     <br>
+    
+     <div id="lists"></div>
+
+     <div id="loading" class="hide">
+          <div class="blocks">
+               <div>המידע נשלח, נא להמתין.</div>
+               <div class="block orange"></div>
+               <div class="block blue"></div>
+          </div>
+     </div>
+</div>
+<!-- partial -->
+  <script src='https://www.gstatic.com/charts/loader.js'></script><script  src="./script.js"></script>
+</body>
+</html>
