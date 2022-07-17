@@ -10,7 +10,10 @@ google.charts.setOnLoadCallback(function () {
      let params = new URLSearchParams(document.location.search);
      let keyCol = params.get("col");
      let valCol = "G";
-     if (keyCol) valCol = getNextLetter(keyCol);
+    if (keyCol) {
+        keyCol = keyCol.toUpperCase();
+        valCol = getNextLetter(keyCol);
+    }
      else keyCol = "F";
      query.setQuery(`select A,B,D,${keyCol},${valCol}`); //F G
      //ערכי4ם,3טופס,2קבועים,1כיתות,0שם
