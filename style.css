@@ -44,5 +44,5 @@ body {
     font-family: "Varela Round", sans-serif;
     background-repeat: repeat-y;
     background-position: left 2em top;
-    background-image: url("../img/line.png");
+    background-image: url("./img/line.png");
 }
