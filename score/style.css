@@ -1,43 +1,70 @@
 body {
-     background-color: #fffcf5;
-}
-#header {
-     display: flex;
-     /*      justify-content: center; */
-/*      align-items: center; */
-     flex-wrap: wrap;
-}
-
-#header * {
-     margin: 1em;
-}
-#logo {
-     border-radius: 4px;
-     width: 150px;
-}
-.ltr {
-     direction: ltr;
-}
-#container {
-     margin-bottom: 5em;
-}
-#container * {
-     font-family: "Varela Round", sans-serif;
-}
-#container *:not(h1, h2, h3) {
-     font-size: 30px;
-}
-#container label {
-     margin: 0.5em;
-     font-weight: bold;
-     display: inline-block;
-     min-width: 7em;
-}
-/* #dynamic{
-     padding-right:6em;
-} */
-body {
+    /*background-color: #fffcf5;*/
     background-repeat: repeat-y;
     background-position: left 2em top;
     background-image: url("../img/line.png");
+    font-family: "Varela Round", sans-serif;
+}
+#main {
+    display: flex;
+    /*      justify-content: center; */
+    /*      align-items: center; */
+    flex-wrap: wrap;
+}
+
+    #main > * {
+        margin: 1em 1em 1em 4em;
+    }
+
+#logo {
+    width: 150px;
+}
+
+
+
+h1 {
+    font-size: 3em
+}
+#dynamic {
+    /*background: #fffefe;*/
+    /*background-color: #fffcf5;*/
+    border-radius: 10px;
+    /*border: 2px solid lightgoldenrodyellow;*/
+}
+/* #container * {
+        font-family: "Varela Round", sans-serif;
+    }*/
+
+/* #container *:not(h1, h2, h3) {
+            font-size: 30px;
+        }*/
+
+/*#container label {
+        margin: 0.5em;
+        font-weight: bold;
+        display: inline-block;
+        min-width: 7em;
+    }*/
+
+.scoreRow {
+    display: flex;
+    align-items: center;
+    padding: 1.8em;
+}
+
+    .scoreRow span {
+        margin-right: 2em;
+        font-size: 3em;
+    }
+
+.scoreRow {
+    background-color: transparent;
+    /* transition the background-color over 1s with a linear animation */
+    transition: background-color 1s linear;
+    border-radius: 10px;
+}
+
+/* the :hover that causes the background-color to change */
+.bgTrans {
+    background-color: lightgoldenrodyellow;
 }
