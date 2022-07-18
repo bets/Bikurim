@@ -257,7 +257,7 @@ function send() {
                (el.type != "radio" || el.checked) &&
                el.getAttribute("list") != "classNameList"
           ) {
-               ar.push(el.value);
+              ar.push(el.value ? el.value : 0);
           }
           return ar;
      }, rowAr);
