@@ -9,7 +9,7 @@ google.charts.setOnLoadCallback(function () {
 
     query.setQuery("select A,B");
     //className,points
-    query.setRefreshInterval(20);
+    query.setRefreshInterval(15);
     query.send(handleQueryResponse);
 });
 var data;
