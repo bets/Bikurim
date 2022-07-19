@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
@@ -7,36 +7,33 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
     </style>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./add.css">
 </head>
-<body>
-<!-- partial:index.partial.html -->
-<div id="container" dir="rtl">
-     <img id="logo" src="../img/logo-croped.png" alt="לוגו" />
-     
-     <div id="dynamic"></div>
-             
-     
- <ul id="errorMsg">
-          <li id="invalidList">נא (למחוק ו)לבחור ערך מהרשימה</li>
-          <li id="invalidEmpty">נא למלא ערך</li>        
-          <li id="invalidPattern">ערך לא תקין</li>
-     </ul>
-     <button id="send">שליחה</button>
-     <br>
-     <br>
-    
-     <div id="lists"></div>
+<body dir="rtl">
+    <div id="container">
+        <img id="logo" src="../img/logo-croped.png" alt="לוגו" />
+        <div id="dynamic"></div>
 
-     <div id="loading" class="hide">
-          <div class="blocks">
-               <div>המידע נשלח, נא להמתין.</div>
-               <div class="block orange"></div>
-               <div class="block blue"></div>
-          </div>
-     </div>
-</div>
-<!-- partial -->
-  <script src='https://www.gstatic.com/charts/loader.js'></script><script  src="./script.js"></script>
+        <ul id="errorMsg">
+            <li id="invalidList">נא (למחוק ו)לבחור ערך מהרשימה</li>
+            <li id="invalidEmpty">נא למלא ערך</li>
+            <li id="invalidPattern">ערך לא תקין</li>
+        </ul>
+        <button id="send">שליחה</button>
+        <br>
+        <br>
+
+        <div id="lists"></div>
+
+        <div id="loading" class="hide">
+            <div class="blocks">
+                <div>המידע נשלח, נא להמתין.</div>
+                <div class="block orange"></div>
+                <div class="block blue"></div>
+            </div>
+        </div>
+    </div>
+    <script src='https://www.gstatic.com/charts/loader.js'></script>
+    <script src="./add.js"></script>
 </body>
 </html>

@@ -20,6 +20,7 @@ google.charts.setOnLoadCallback(function () {
     query.send(handleQueryResponse);
 });
 var data;
+var docTitle;
 function handleQueryResponse(re) {
     if (re.isError()) {
         console.log(
@@ -37,6 +38,7 @@ function handleQueryResponse(re) {
         else if (item.key == "כותרת") {
             let node = createHtml(`<h1>${item.val}</h1>`);
             qi("dynamic").append(node);
+            docTitle = item.val[0];
         } else if (item.key == "שם") {
             makeTemplatedSelect(0, "name", "שם");
         } else if (item.key == "כיתה") {
@@ -246,6 +248,8 @@ function send() {
     let timestamp = new Date().toLocaleString("he-IL");
     let rowAr = [];
     rowAr.push(timestamp);
+    if (docTitle)
+        rowAr.push(docTitle);
     rowAr = Array.from(qsa("input")).reduce((ar, el) => {
         if (
             (el.type != "radio" || el.checked) &&
