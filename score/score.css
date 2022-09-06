@@ -57,23 +57,26 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.8em;
-    /*justify-content: center;*/
-}
-.scoreRow {
-    background-color: transparent;
+    padding: 1.8em 1em;
+    cursor: default;
     /* transition the background-color over 1s with a linear animation */
-    transition: background-color 1s linear;
+    background-color: transparent;
+    transition: background-color 2s linear;
     border-radius: 10px;
 }
 
     .scoreRow span {
         margin-bottom: 0.5em;
-        font-size: 3em;
+        font-size: 2.5em;
     }
+
 .textShadow {
     text-shadow: 2px 2px black;
 }
+
+/*.boxUnderline {
+    border-bottom: 1px solid black;
+}*/
 /* causes the background-color to change */
 .bgTrans {
     /*background-color: lightgoldenrodyellow;*/

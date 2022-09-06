@@ -14,7 +14,7 @@ google.charts.setOnLoadCallback(function () {
 });
 var data;
 //var oldHouses;
-var oldHouses2 = new Map();
+var lastScores = new Map();
 function handleQueryResponse(re) {
     //cl("start");
     if (re.isError()) {
@@ -57,16 +57,16 @@ function handleQueryResponse(re) {
     //    return b[1] - a[1];
     //}));
     //cl(houses);
-
+    let firstRun = !lastScores.size;
     for (const clas of classScores) {
         let node = createHtml(
-            `<div id="${clas.key}" class="scoreRow${!oldHouses2 && oldHouses2.get(clas.key) != clas.val ? ' bgTrans' : ''}${winners.has(clas.key) ? ' bgWin' : ''}">
-                <span class="textShadow">${clas.key}</span>
-                <span>${clas.val}</span>
+            `<div id="${clas.key}" class="scoreRow${!firstRun && lastScores.get(clas.key) != clas.val ? ' bgTrans' : ''}${winners.has(clas.key) ? ' bgWin' : ''}">
+                <span class="">${clas.key}</span>
+                <span class="textShadow">${clas.val}</span>
             </div>`
         );
         qi("dynamic").append(node);
-        oldHouses2.set(clas.key, clas.val);
+        lastScores.set(clas.key, clas.val);
     }
     addEventListeners();
     //for (const [name, score] of houses) {
