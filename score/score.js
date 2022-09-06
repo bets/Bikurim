@@ -13,8 +13,10 @@ google.charts.setOnLoadCallback(function () {
     query.send(handleQueryResponse);
 });
 var data;
-var oldHouses;
+//var oldHouses;
+var oldHouses2 = new Map();
 function handleQueryResponse(re) {
+    //cl("start");
     if (re.isError()) {
         console.log(
             `Error in query: ${re.getMessage()} ${re.getDetailedMessage()}`
@@ -24,44 +26,59 @@ function handleQueryResponse(re) {
     data = re.getDataTable();
     //CREATE
     var classScores = getCol(0, 1);
+    //cl(classScores);
     qi("dynamic").replaceChildren();
 
-    var houses = new Map([
-        ["aria", 0],
-        ["batsir", 0],
-        ["gadid", 0]
-    ]);
-    let oldScore;
-    for (const clas of classScores) {
-        switch (true) {
-            case (clas.key.includes("ארייה")):
-                oldScore = houses.get('aria');
-                houses.set('aria', oldScore += clas.val);
-                break;
-            case (clas.key.includes("בציר")):
-                oldScore = houses.get('batsir');
-                houses.set('batsir', oldScore += clas.val);
-                break;
-            case (clas.key.includes("גדיד")):
-                oldScore = houses.get('gadid');
-                houses.set('gadid', oldScore += clas.val);
-                break;
-            default: cl("found nothing");
-        }
-    }
+    //var houses = new Map([
+    //    ["aria", 0],
+    //    ["batsir", 0],
+    //    ["gadid", 0]
+    //]);
+    //let oldScore;
+    //for (const clas of classScores) {
+    //    switch (true) {
+    //        case (clas.key.includes("ארייה")):
+    //            oldScore = houses.get('aria');
+    //            houses.set('aria', oldScore += clas.val);
+    //            break;
+    //        case (clas.key.includes("בציר")):
+    //            oldScore = houses.get('batsir');
+    //            houses.set('batsir', oldScore += clas.val);
+    //            break;
+    //        case (clas.key.includes("גדיד")):
+    //            oldScore = houses.get('gadid');
+    //            houses.set('gadid', oldScore += clas.val);
+    //            break;
+    //        default: cl("found nothing");
+    //    }
+    //}
     //cl(houses);
-    houses = new Map([...houses.entries()].sort(function (a, b) {
-        return b[1] - a[1];
-    }));
+    //houses = new Map([...houses.entries()].sort(function (a, b) {
+    //    return b[1] - a[1];
+    //}));
     //cl(houses);
 
-    for (const [name, score] of houses) {
+    for (const clas of classScores) {
         let node = createHtml(
-            `<div class="scoreRow${oldHouses && oldHouses.get(name) != score ?' bgTrans':''}"><img width="100" src="../img/${name}.png"/><span>${score}</span></div>`//<label>${item.key}</label>
+            `<div id="${clas.key}" class="scoreRow${oldHouses2 && oldHouses2.get(clas.key) != clas.val ? ' bgTrans' : ''}${winners.has(clas.key) ? ' bgWin' : ''}">
+            <span>${clas.key}</span>
+            <span>${clas.val}</span></div>`
         );
         qi("dynamic").append(node);
+        oldHouses2.set(clas.key, clas.val);
     }
-    oldHouses = houses;
+    addEventListeners();
+    //for (const [name, score] of houses) {
+    //    let node = createHtml(
+    //        `<div class="scoreRow${oldHouses && oldHouses.get(name) != score ? ' bgTrans' : ''}">
+    //        <span>${name}</span>
+    //        <span>${score}</span></div>`
+    //    );
+    //<img width="100" src="../img/${name}.png" alt="${name}"/>
+    //qi("dynamic").append(node);
+    //}
+    //oldHouses = houses;
+    //cl("done");
 }
 
 // HANDEL DATA FROM SHEETS
@@ -105,6 +122,34 @@ function getValue(row, col) {
 function createHtml(str) {
     return document.createRange().createContextualFragment(str);
 }
+
+// EVENTS
+var winners = new Map();
+function addEventListeners() {
+    qsa("#dynamic .scoreRow").forEach(function (e) {
+        e.addEventListener("click", (e) => {
+            let key = e.target.id ? e.target.id : e.target.parentNode.id;
+            if (winners.has(key)) {
+                winners.delete(key);
+                qs("#" + key).classList.remove("bgWin");
+            }
+            else {
+                winners.set(key);
+                qs("#" + key).classList.add("bgWin");
+            }
+            cl(key)
+            cl(winners.has(key));
+        });
+    });
+    //qs("#send").addEventListener("click", send);
+    // qsa("[list]").forEach((e) => {
+    //      e.addEventListener("change", isFromList);
+    // });
+    //qsa("#payCalc .notEmpty input").forEach((e) => {
+    //     e.addEventListener("change", isTextNotEmpty);
+    //});
+}
+
 // function getNextLetter(char) {
 //      return String.fromCharCode(char.charCodeAt(char.length - 1) + 1); //go to next letter
 // }
@@ -158,14 +203,14 @@ function createHtml(str) {
 //      qi("lists").appendChild(datalist);
 // }
 
-function saveToStorage() {
-    localStorage.setItem("name", qs("#name input").value);
-}
-function restoreFromStorage() {
-    let saved = localStorage.getItem("name");
-    if (saved == null) return;
-    qs("#name input").value = saved;
-}
+//function saveToStorage() {
+//    localStorage.setItem("name", qs("#name input").value);
+//}
+//function restoreFromStorage() {
+//    let saved = localStorage.getItem("name");
+//    if (saved == null) return;
+//    qs("#name input").value = saved;
+//}
 
 // CALCULATIONS
 
@@ -177,19 +222,7 @@ function restoreFromStorage() {
 //      if (option == null) return null;
 //      return option.dataset.val;
 // }
-// EVENTS
-// function addEventListeners() {
-//      qsa("#name input").forEach(function (e) {
-//           e.addEventListener("change", () => setTimeout(saveToStorage, 1000));
-//      });
-//      qs("#send").addEventListener("click", send);
-//      // qsa("[list]").forEach((e) => {
-//      //      e.addEventListener("change", isFromList);
-//      // });
-//      qsa("#payCalc .notEmpty input").forEach((e) => {
-//           e.addEventListener("change", isTextNotEmpty);
-//      });
-// }
+
 //   VALIDATIONS
 // function isFromList(e) {
 //      isFromListCheck(e.target);

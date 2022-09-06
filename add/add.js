@@ -39,8 +39,8 @@ function handleQueryResponse(re) {
             let node = createHtml(`<h1>${item.val}</h1>`);
             qi("dynamic").append(node);
             docTitle = item.val[0];
-        } else if (item.key == "שם") {
-            makeTemplatedSelect(0, "name", "שם");
+        } else if (item.key == "שם המורה") {
+            makeTemplatedSelect(0, "name", "שם המורה");
         } else if (item.key == "כיתה") {
             makeTemplatedSelect(1, "className", "כיתה");
         } else if (item.val.length > 1) {
