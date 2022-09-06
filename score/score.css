@@ -73,12 +73,14 @@ body, html {
 .textShadow {
     text-shadow: 2px 2px black;
 }
-
+.scoreRow:hover {
+    background-color: rgba(250,250,210,0.3);
+}
 /*.boxUnderline {
     border-bottom: 1px solid black;
 }*/
 /* causes the background-color to change */
 .bgTrans {
     /*background-color: lightgoldenrodyellow;*/
-    background-color: rgba(250,250,210,0.4);
+    background-color: rgba(250,250,210,0.3);
 }
