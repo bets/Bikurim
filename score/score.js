@@ -61,8 +61,9 @@ function handleQueryResponse(re) {
     for (const clas of classScores) {
         let node = createHtml(
             `<div id="${clas.key}" class="scoreRow${oldHouses2 && oldHouses2.get(clas.key) != clas.val ? ' bgTrans' : ''}${winners.has(clas.key) ? ' bgWin' : ''}">
-            <span>${clas.key}</span>
-            <span>${clas.val}</span></div>`
+                <span class="textShadow">${clas.key}</span>
+                <span>${clas.val}</span>
+            </div>`
         );
         qi("dynamic").append(node);
         oldHouses2.set(clas.key, clas.val);

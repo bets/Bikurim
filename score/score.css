@@ -60,12 +60,6 @@ body, html {
     padding: 1.8em;
     /*justify-content: center;*/
 }
-
-    .scoreRow span {
-        /*margin-right: 2em;*/
-        font-size: 3em;
-    }
-
 .scoreRow {
     background-color: transparent;
     /* transition the background-color over 1s with a linear animation */
@@ -73,6 +67,13 @@ body, html {
     border-radius: 10px;
 }
 
+    .scoreRow span {
+        margin-bottom: 0.5em;
+        font-size: 3em;
+    }
+.textShadow {
+    text-shadow: 2px 2px black;
+}
 /* causes the background-color to change */
 .bgTrans {
     /*background-color: lightgoldenrodyellow;*/
